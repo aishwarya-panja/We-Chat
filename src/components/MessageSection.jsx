@@ -16,7 +16,9 @@ const MessageSection = () => {
     return () =>{
       unSub();
     }
-  },[data.chatId])
+  },[data.chatId]);
+
+  console.log(messages)
 
   return (
     <div className="messages">
@@ -27,4 +29,4 @@ const MessageSection = () => {
   );
 }
 
-export default MessageSection
+export default MessageSection;

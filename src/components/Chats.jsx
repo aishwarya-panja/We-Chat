@@ -14,9 +14,6 @@ const Chats = () => {
     const getChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
         setChats(doc.data());
-        console.log(doc)
-        console.log(doc.data().name)
-        console.log(chats)
       });
 
       return () => {
@@ -33,7 +30,7 @@ const Chats = () => {
 
   return (
     <div className="chats">
-      {Object.entries(chats||{})?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
+      {Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
         <div
           className="userChat"
           key={chat[0]}
@@ -42,7 +39,7 @@ const Chats = () => {
           <img src={chat[1].userInfo.photoURL} />
           <div className="userChatInfo">
             <span>{chat[1].userInfo.displayName}</span>
-            <p>{chat[1].userInfo.lastMessage?.text}</p>
+            <p>{chat[1].lastMessage?.text}</p>
           </div>
         </div>
       ))}
