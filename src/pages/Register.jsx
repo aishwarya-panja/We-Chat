@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Add from '../img/add.png';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../firebase";
@@ -25,7 +25,7 @@ const Register = () => {
 
       uploadTask.on(
         (error) => {
-          setErr(error);
+          setErr(true);
         },
         () =>{
           getDownloadURL(uploadTask.snapshot.ref).then( async(downloadURL) => {
